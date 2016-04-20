@@ -1,0 +1,45 @@
+<?php
+    //CONFIGURACION BASICA
+    define('BASE_URL', ""); //URL basico para navegar
+    define('APP_NAME', 'Tienda Rigo Heppi');
+    define('APP_SLOGAN', 'quien hace el sitio');
+    define('APP_COMPANY', 'www.drink.com.co');
+    
+    //DATOS DE LA BASE DE DATOS
+ define('DB_HOST', 'p3nlmysql61plsk.secureserver.net:3306');
+    define('DB_USER', 'root2');
+    define('DB_PASS', '23camilo');
+    define('DB_NAME', 'tiendaheppi');
+    define('DB_CHAR', 'utf8');
+    //RUTAS PARA RENDERIZAR
+    define('VISTAS',ROOT . 'views' . DS . 'template' . DS . 'view_rendering' . DS);
+    define('BASIC',ROOT . 'views' . DS . 'template' . DS . 'view_basic' . DS);
+    define("RECURSOS", BASE_URL . 'views' . DS . 'template' . DS . 'assets' . DS);
+    
+    //CONFIGURACIONES APLICACION
+    define('TYPE_APP',"2");//1 sin loguin dos con loguin. 2 con loguin
+    define('CONTROLLERS',APP_PATH.'controllers'.DS);
+    define('MODELS',APP_PATH.'models'.DS);
+    define('VIEWS',APP_PATH.'view'.DS);
+   define('LIBRARYS_LOCAL', $_SERVER["DOCUMENT_ROOT"].DS."library".DS);
+    //define('LIBRARYS_LOCAL', $_SERVER["DOCUMENT_ROOT"].DS."tienda_heppi_V3".DS."library".DS);
+    define('LIBRARYS',BASE_URL.'library'.DS);
+    define('LIBRARYS_ADMIN',"..".DS.BASE_URL.'library'.DS);
+    
+    define("LANG", "en");
+    
+    $objeFramework = array("greedTable"=>"Table",
+                            "ControlaVistas"=>"Vistas"
+        );
+
+
+        
+    
+   
+        
+       
+          
+   
+
+   
+

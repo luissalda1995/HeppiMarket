@@ -1,0 +1,22 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.slide{
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+   height: 650px;
+   overflow: hidden;
+}
+ 
+.slide img{
+    width: 100%;
+    position: absolute;
+    top: 0px
+}
+ 
+.slide .img2, .slide .img3 {
+    display: none;
+}

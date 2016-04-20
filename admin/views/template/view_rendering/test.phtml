@@ -1,0 +1,9 @@
+<?php
+ $objeContacto = ControllerMain::makeObjects("Pedidos",1);
+$data = $objeContacto->detallePagoFactura($_GET['coidgopago']);
+foreach ($data as $value) {
+    print_r($value);
+}
+?>
+
+ 

@@ -1,0 +1,39 @@
+<script src="<?php echo RECURSOS;?>js<?php echo DS; ?>jquery.validar.js" type="text/javascript"></script>
+<article class ="banner-rigo">
+    <img src="public/general/rigo-uran-contacto.jpg" alt ="" title="" />
+</article>
+<section class ="center-body">
+    <section id ="content-form-contact" >
+        <h2 class ="titulos-rigo">Rigo<span class="color-rosa">Contacto</span></h2>
+        <article>
+            <form id ="contactarNatural" class ="tramitar_pedido forms">
+                <div class ="columna inline">
+                    <div class ="rows">
+                        <span class ="label-form"><label>Nombre <span class ="required">*</span></label>
+                            <input class ="validar" class ="validar" type ="text" name ="txtnombre" id ="txtnombre" placeholder="Nombre" />
+                        </span>
+                    </div>
+                    <div class ="rows">
+                        <span class ="label-form"><label>Correo <span class ="required">*</span></label>
+                            <input  class ="validar" class ="validar" type ="email" name ="txtcorreo" id ="txtcorreo" placeholder="Correo" /></span>
+                    </div>
+                     <div class ="rows">
+                        <span class ="label-form"><label>Asunto <span class ="required">*</span></label>
+                            <input class ="validar" class ="validar" type ="text" name ="txtasuntocontacto" id ="txtasuntocontacto" placeholder="Asunto" />
+                        </span>
+                    </div>
+                    
+                </div>
+                <div class ="columna inline">
+                    <div class ="rows">
+                        <span class ="label-form">
+                            <textarea placeholder="Mensaje" class ="validar" name="txtmensaje" id ="txtmensaje" ></textarea>
+                        </span>
+                    </div>
+                </div>
+                <div class ="content-button">
+                    <input   class ="botones-carro"  type="button" id ="btnenviarcontacto" class="botones-carro" value="Enviar" />
+                </div>
+            </form>
+        </article>
+    </section>

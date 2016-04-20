@@ -1,0 +1,78 @@
+ <div class="row">
+            <div class="box col-md-12">
+                <div class="box-inner">
+                    <div class="box-header well" data-original-title="">
+                        <h2><i class="glyphicon glyphicon-edit"></i> Agregar productos</h2>
+
+                        <div class="box-icon">
+                            <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                    class="glyphicon glyphicon-cog"></i></a>
+                            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                    class="glyphicon glyphicon-chevron-up"></i></a>
+                            <a href="#" class="btn btn-close btn-round btn-default"><i
+                                    class="glyphicon glyphicon-remove"></i></a>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <?php
+                        $obje = ControllerMain::makeObjects("Productos", 1);
+                        ?> 
+               <form  role="form" id ="form-insertar-productos">
+                            <div class="form-group">
+                                <label for="txtnombre">Nombre producto</label>
+                                <input type="text" class="form-control" id="txtnombre" name ="txtnombre"  >
+                                <input type ="hidden" name ="idproducto" >
+                            </div>
+                            <div class="form-group">
+                                <label for="imagen">Imagen </label>
+                                <input type="text" class="form-control" id="imagen" name ="txtimagenuno"  >
+                            </div>
+                          
+                            <div class="form-group">
+                                <label for="txtcosto">Costo producto</label>
+                                <input type="number" class="form-control" id="txtcosto" name ="txtcosto"  >
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="txtseo">Características de busqueda(SEO)</label>
+                                <input type="text" class="form-control" id="txtseo" name ="txtseo"  >
+                            </div>
+                            <div class="form-group">
+                                <label for="txtorden">Orden</label>
+                                <input type="text" class="form-control" id="txtorden" name ="txtorden"  >
+                            </div>
+                            <div class="form-group">
+                                <label for="txcantidad">Cantidad</label>
+                                <input type="text" class="form-control" id="txcantidad"  name ="txcantidad" ></div>
+                             <div class="form-group">
+                                <label for="txt-cantidad">Estado</label>
+                                <select  name ="estado"  id ="estado">
+                                    <option value ="1">Activo</option>
+                                    <option value ="0">Desactivado</option>
+                                </select>
+                            </div>
+                             <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                              <textarea class="form-control" rows="3" name ="descripcion"></textarea>
+                         </div>
+                           
+                                
+                        
+                           
+                            <div class="control-group">
+                                <label class="control-label" for="categorias">Categorias producto</label>
+                                <div class="controls">
+                                    <select  id ="categorias" name ="categorias">
+                                    <?php echo $obje->seletCategorias(); ?>
+                                    </select>
+                                </div>
+                            </div><br />
+                            <div class="control-group">
+                                <input id ="btn-insertar-producto" type="button"value ="Guardar Producto">
+                                
+                            </div>
+                            
+                        </form>                    </div>
+                </div>
+            </div>
+        </div>

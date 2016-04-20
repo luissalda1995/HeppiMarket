@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="<?php echo $lang; ?>">
+<head>
+<title><?php echo APP_NAME; ?></title>
+<meta charset="utf-8" />
+    <?php  echo $this->_objMain->cargarRecursos('main'); ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="<?php echo LIBRARYS;?>fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="<?php echo LIBRARYS;?>fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script>
+        $(".fancybox").fancybox({
+            maxWidth    : 334,
+            minHeight   : 261,
+            maxHeight   : 261,
+            'autoScale' : false,
+            'transitionIn' : 'none',
+            'transitionOut' : 'none',
+            'type' : 'iframe',
+       });
+  $(window).load(function(){
+     $("#list-menu  li a.ancla").each(function(){
+
+                    var height = $("header").height();
+                    var link = $(this).attr("href").split("#");
+                    var ancla = "#"+link[link.length-1];
+                   
+
+                        if (ancla  == document.location.hash ) {
+                             if(ancla != "#tienda-ancla-canasta") {
+                                var enlace  = ancla;
+                                 //alert(enlace);
+                                var topnew = $(enlace).offset().top;
+                                //alert(topnew);
+                                $('html, body').animate({
+                                scrollTop: topnew = topnew - height
+                                }, 1000);
+                             }
+                        } 
+                   
+                })
+      //para llevar el footer siempre al bottom 0;
+        var window_height = $(window).height();
+        var page_height =  $('#main-emboltura').height();
+        var footer_height = $('footer').height();
+        if (page_height < window_height) {
+            margin_footer = window_height - page_height - footer_height;
+            $('footer').css('margin-top', margin_footer+44);
+        }
+   
+  })        
+            
+                   
+             
+    </script>
+
+</head>
+<body>
+    <nav id ="redes-sociales-heppi" >
+        <ul id ="list-redes">
+            <li><a href="https://www.facebook.com/heppimercadosaludable" target="_blank"><img src="<?php echo RECURSOS;?>img<?php echo DS; ?>facebook-heppi.png"></a></li>
+            <li><a href="https://instagram.com/mercado_heppi/"target="_blank"><img src="<?php echo RECURSOS;?>img<?php echo DS; ?>instagram-heppi.png"></a></li>
+            <li><a href="#tienda-contacto"><img src="<?php echo RECURSOS;?>img<?php echo DS; ?>contactanos-heppi.png"></a></li>
+        </ul>
+    </nav>
+    <header>
+
+        <div id ="center-header">
+            <?php if(isset($_SESSION['usuario']) && !empty($_SESSION['usuario'])): ?>
+            <div id ="datos-usuario">
+                <ul>
+                    <li><a href="index.php?vista=myprofile"><?php echo $_SESSION['usuario'][0]['nombre']." ".$_SESSION['usuario'][0]['apellido']?></a></li>
+                    <li><a href="index.php?operation=cerrarSession&controller=Usuarios">Salir</a></li>
+                </ul>
+            </div>
+            <?php endif; ?>
+            <figure id ="heppi-logo" class ="inline middle">
+               <a class="ancla" href="index.php"> <img src="<?php echo RECURSOS;?>img<?php echo DS; ?>heppi-market.png" alt="Heppi Market aliementos saludables" title="HeppiMarket Saludable" /></a>
+            </figure>
+            <nav id ="heppi-menu" class ="inline middle">
+                <ul id ="list-menu">
+                    <?php if(isset($_GET['vista']) || @$_GET['vista'] =='cart' ):?>
+                     <li><a class="ancla" href="index.php">Inicio</a></li>
+                        <li><a class="ancla" href="index.php#uno">Como funciona?</a></li>
+                    <li><a class="ancla" href="index.php#productos-Heppi">Productos</a></li>
+                 
+                    <li><a class ="ancla" href="index.php#tienda-ancla">Tienda</a></li>
+                    <li><a class ="ancla" href="index.php#tienda-contacto">Contáctenos</a></li>
+                    <?php else: ?>
+                     <li><a class="ancla" href="#slides">Inicio</a></li>
+                       <li><a class ="ancla" href="#comofunciona-Heppi">Cómo funciona?</a></li>
+                    <li><a class="ancla" href="#productos-Heppi">Productos</a></li>
+              
+                    <li><a class ="ancla" href="#tienda-ancla">Tienda</a></li>
+                  
+                    <li><a class ="ancla" href="#tienda-contacto">Contáctenos</a></li>
+                    <?php endif;?>
+                </ul>
+            </nav>
+            <span class ="inline middle" id ="iniciar-session">
+                <a href="index.php?fancy=loguin" class ="inicio-sesion fancybox">Iniciar Sesión</a> / 
+                <a href="index.php?vista=myaccount">Registrarse</a>
+            </span>
+            <div id ="carrito" class ="inline middle">
+               <a  href ="index.php?vista=cart">
+                    <img src="<?php echo RECURSOS;?>img<?php echo DS; ?>canasta-carro.png" alt="HeppiMarket" title="Carrito de compras HeppiMarket" / >
+                </a>
+                <div id ="detalle-canasta">
+                    <span id ="cantidad-cart">
+                         <?php
+                            $_SESSION['contador'] = (isset($_SESSION['contador']))?$_SESSION['contador']:"";
+                            echo $_SESSION['contador'];
+                            if($_SESSION['contador']>0){
+                                echo "<style>
+                                    #detalle-canasta{
+                                        display:inline-block;
+                                    }
+                                </style>";
+                            }
+                        ?>
+                    </span>
+                    <span style ="vertical-align-middle;color:#000;" > Productos</span><br />
+                    <span id ="costo-cart">
+                        <?php 
+                            $_carrito = ControllerMain::makeObjects("Carrito",1);
+                           if($_carrito->totalCart(1) == 0){
+                                echo "<span style='color:#000;'> Valor total</span>";
+                            }else{
+                                echo $_carrito->totalCart(1);
+                                echo "<span style='color:#000;'> Valor total</span>";
+                            }
+                        ?>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+        
+   

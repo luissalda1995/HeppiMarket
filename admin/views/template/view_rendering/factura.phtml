@@ -1,0 +1,95 @@
+<meta charset="ISO-8859-1">
+<?php
+$objeContacto = ControllerMain::makeObjects("Pedidos",1);
+$vector = $objeContacto->detallePagoFactura($_GET['coidgopago']);
+$dataCliente = $objeContacto->getinfoCliente($_GET['coidgopago']);
+require_once(LIBRARYS_LOCAL . "pdf" . DS . "fpdf.php");
+$id_factura = $_GET['coidgopago'];
+
+// //variable que guarda el nombre del archivo PDF
+ $archivo = "factura-$id_factura.pdf";
+ echo $archivo;
+ $archivo_de_salida = $archivo;
+
+
+$pdf = new FPDF();  //crea el objeto
+$pdf->AddPage();  //añadimos una página. Origen coordenadas, esquina superior izquierda, posición por defeto a 1 cm de los bordes.
+//logo de la tienda
+// Encabezado de la factura
+$pdf->SetFont('Arial', 'B', 14);
+$pdf->Cell(50, 45, $pdf->Image('http://200.116.1.182/framework_v2/views/template/assets/img/logo-rigo-uran.jpg', 5, 4, 40, 40, 'JPG', 'http://200.116.1.182/framework_v2/'), 0, 0, "C");
+$pdf->SetFont('Arial', 'B', 11);
+$pdf->SetXY(48, 10);
+$pdf->MultiCell(50, 6, utf8_decode("RIUM S.A.S" . "\n" . "NIT: 900.748.651-0" . "\n" . "Tel: 268 62 59" . "\n" . "Calle: 10 a nro 43 d 64" . "\n" . "Medellín - Colombia"), 0, "C", false);
+$pdf->SetXY(100, 10);
+$pdf->SetFont('Arial', 'B', 8);
+$pdf->Cell(50, 4, utf8_decode("Fecha de emsión"), 1, 2, "C");
+$pdf->Cell(16.66666666666667, 4, utf8_decode("Día"), 1, 0, "C");
+$pdf->Cell(16.66666666666667, 4, utf8_decode("Mes"), 1, 0, "C");
+$pdf->Cell(16.66666666666667, 4, utf8_decode("Año"), 1, 0, "C");
+$pdf->SetXY(100, 18);
+$pdf->Cell(16.66666666666667, 8, "  ", 1, 0, "C");
+$pdf->Cell(16.66666666666667, 8, "  ", 1, 0, "C");
+$pdf->Cell(16.66666666666667, 8, "  ", 1, 0, "C");
+$pdf->SetXY(150, 10);
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(50, 8, "FACTURA VENTAS", 1, 2, "C");
+$pdf->Cell(50, 8, "NRO. $id_factura", 1, 0, "C");
+$pdf->SetFont('Arial', 'B', 11);
+$top_datos = 55;
+$pdf->SetXY(10, $top_datos);
+// $pdf->SetFont('Arial', '', 10);
+// $pdf->Cell(100, 8, utf8_decode("Nombre o razón social: $dataCliente[nombrecliente] $dataCliente[apellidocliente]"), 1, 0, "L");
+// $pdf->Cell(90, 8, "C.C o NIT. $dataCliente[cedulacliente]", 1, 0, "L");
+// $top_datos = 63;
+// $pdf->SetXY(10, $top_datos);
+// $pdf->Cell(100, 8, utf8_decode("Dirección: $dataCliente[direccionentrega]"), 1, 0, "L");
+// $pdf->Cell(45, 8, "Ciudad: $dataCliente[ciudad]", 1, 0, "L");
+// $pdf->Cell(45, 8, utf8_decode("Teléfono: $dataCliente[telefonocliente]"), 1, 0, "L");
+// $top_datos = 71;
+// $pdf->SetXY(10, $top_datos);
+// $pdf->SetFont('Arial', 'B', 10);
+// $pdf->Cell(100, 8, utf8_decode("Descripción"), 1, 0, "C");
+// $pdf->Cell(18, 8, utf8_decode("Cantidad: "), 1, 0, "L");
+// $pdf->Cell(27, 8, "Valor Unit: ", 1, 0, "L");
+// $pdf->Cell(45, 8, "Valor total: ", 1, 0, "C");
+// $top_datos = 79;
+// $pdf->SetXY(10, $top_datos);
+// $pdf->SetFont('Arial', '', 8);
+// $total = 0;
+// foreach ($vector as $value) {
+//     $producto = $value['nombre'];
+//     $cantidad = $value['cantidad'];
+//     $valor = $value['total'];
+//     $valototal =  $valor* $cantidad;
+//     $total = $total +$valototal; 
+//     $valortotal = "$ " . number_format($valototal) . " COP";
+//     $pdf->Cell(100, 8, utf8_decode($producto), 1, 0, "C");
+//     $pdf->Cell(18, 8, $cantidad, 1, 0, "C");
+//     $pdf->Cell(27, 8, "$ " . number_format($valor) . " COP", 1, 0, "L");
+//     $pdf->Cell(45, 8, $valortotal, 1, 0, "C");
+//     $top_datos = $top_datos + 8;
+//     $pdf->SetXY(10, $top_datos);
+// }
+
+// $iva = $total * 16 /100;
+// $pdf->SetXY(128, $top_datos);
+// $pdf->Cell(27, 8, "Total", 1, 0, "C");
+// $pdf->Cell(45, 8, "$ ".number_format($total)." COP", 1, 0, "C");
+// $top_datos = $top_datos + 15;
+// $pdf->SetXY(10, $top_datos);
+// $pdf->SetFont('Arial', '', 6);
+
+$pdf->Output($archivo_de_salida); //cierra el objeto pdf
+//Creacion de las cabeceras que generarán el archivo pdf
+header('Content-Type: text/html; charset=utf-8');
+header("Content-Type: application/download");
+header("Content-Disposition: attachment; filename=$archivo");
+header("Content-Length: " . filesize("$archivo"));
+$fp = fopen(utf8_decode($archivo), "r");
+fpassthru($fp);
+fclose($fp);
+//Eliminación del archivo en el servidor
+// unlink($archivo);
+
+

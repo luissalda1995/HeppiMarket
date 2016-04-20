@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        ===
+        This comment should NOT be removed.
+
+        Charisma v2.0.0
+
+        Copyright 2012-2014 Muhammad Usman
+        Licensed under the Apache License v2.0
+        http://www.apache.org/licenses/LICENSE-2.0
+
+        http://usman.it
+        http://twitter.com/halalit_usman
+        ===
+    -->
+    <meta charset="utf-8">
+    <title>Administrador Heppi mercado saluble</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
+     <script type="text/javascript" src="<?php echo LIBRARYS;?>ckeditor/ckeditor.js"></script>
+    <!-- The styles -->
+    <link  href="<?php echo RECURSOS;?>css<?php echo DS; ?>bootstrap-cerulean.min.css" rel="stylesheet">
+     <link  href="<?php echo RECURSOS;?>css<?php echo DS; ?>main.css" rel="stylesheet">
+    <link href="<?php echo RECURSOS;?>css<?php echo DS; ?>charisma-app.css" rel="stylesheet">
+    <link href="<?php echo RECURSOS;?>bower_components<?php echo DS; ?>fullcalendar/dist/fullcalendar.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>bower_components<?php echo DS; ?>fullcalendar/dist/fullcalendar.print.css" rel='stylesheet' media='print'>
+    <link href="<?php echo RECURSOS;?>bower_components<?php echo DS; ?>chosen/chosen.min.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>bower_components<?php echo DS; ?>colorbox/example3/colorbox.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>bower_components<?php echo DS; ?>responsive-tables/responsive-tables.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>bower_components<?php echo DS; ?>bootstrap-tour/build/css/bootstrap-tour.min.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>css<?php echo DS; ?>jquery.noty.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>css<?php echo DS; ?>noty_theme_default.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>css<?php echo DS; ?>elfinder.min.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>css<?php echo DS; ?>elfinder.theme.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>css<?php echo DS; ?>jquery.iphone.toggle.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>css<?php echo DS; ?>uploadify.css" rel='stylesheet'>
+    <link href="<?php echo RECURSOS;?>css<?php echo DS; ?>animate.min.css" rel='stylesheet'>
+    
+    <!-- jQuery -->
+    <script src="<?php echo RECURSOS;?>bower_components<?php echo DS; ?>jquery/jquery.min.js"></script>
+    <!-- Libreria de funciones javascritp php -->
+    <script src="<?php echo RECURSOS;?>js<?php echo DS; ?>libreriaFunciones.js"></script>
+    <!--Archivo validar-->
+    <script src="<?php echo RECURSOS;?>js<?php echo DS; ?>funciones.validacion.js"></script>
+    <!--Archivo main js-->
+    <script src="<?php echo RECURSOS;?>js<?php echo DS; ?>main.js"></script>
+     <script src="<?php echo RECURSOS;?>js<?php echo DS; ?>printer.js"></script>
+    <!-- Include Required Prerequisites -->
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+ 
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+   
+</head>
+
+<body>
+    <!-- topbar starts -->
+    <div class="navbar navbar-default" role="navigation">
+
+        <div class="navbar-inner">
+            <button type="button" class="navbar-toggle pull-left animated flip">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php?lang=es&vista=home"> <img alt="Charisma Logo" src="<?php echo RECURSOS;?>img<?php echo DS; ?>heppi-market.png" class="hidden-xs"/>
+                <span>Heppi panel de administración</span></a>
+
+            <!-- user dropdown starts -->
+            <div class="btn-group pull-right">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> Administrador</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="index.php?lang=es&vista=perfil">Perfil</a></li>
+                    <li class="divider"></li>
+                    <li><a href="index.php?controller=Usuarios&operation=cerrarSession">Salir</a></li>
+                </ul>
+            </div>
+            <!-- user dropdown ends -->
+
+          
+        </div>
+    </div>
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- left menu starts -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+                        <li class="nav-header">Panel</li>
+                        
+                        <li><a class="ajax-link" href="index.php?vista=clientes"><i class="glyphicon glyphicon-eye-open"></i><span> Clientes</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="index.php?vista=informe_ventas"><i
+                                    class="index.php?vista=informe_ventas"></i><span> Ventas</span></a></li>
+                    
+                        <li><a class="ajax-link" href="index.php?vista=gestion_slider"><i class="glyphicon glyphicon-font"></i><span> Slider</span></a>
+                        </li>
+<!--                        <li><a class="ajax-link" href="gallery.html"><i class="glyphicon glyphicon-picture"></i><span> Galeria del sitio</span></a>
+                        </li>-->
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-picture"></i><span> Galeria del sitio</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="index.php?vista=galeria_slider">Slider</a></li>
+                                <li><a href="index.php?vista=galeria_productos">Productos</a></li>
+                                <li><a href="index.php?vista=galeria_general">General</a></li>
+                            </ul>
+                        </li>   
+                     
+                        <li>
+                            <a class="ajax-link" href="index.php?vista=inventario">
+                            <i class="glyphicon glyphicon-th"></i><span> Inventario</span></a>
+                        </li>
+                        <li>
+                            <a class="ajax-link" href="index.php?vista=producto_tienda">
+                            <i class="glyphicon glyphicon-th"></i><span> Todos los productos</span></a>
+                        </li>
+                        <li><a href="index.php?vista=gestion_user_panel"><i class="glyphicon glyphicon-globe"></i><span> Gestion de usuarios admin</span></a></li>
+                    </ul>
+<!--                    <label id="for-is-ajax" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>-->
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+        <!-- left menu ends -->
+
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">Warning!</h4>
+
+                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    enabled to use this site.</p>
+            </div>
+        </noscript>
+
+        <div id="º" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href ="#">Área de trabajo</
+        </li>
+    </ul>
+</div>

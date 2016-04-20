@@ -1,0 +1,170 @@
+<section id="main-emboltura">
+    <div style="height: 600px;" id="slides">
+        <div class="slides-container">
+        <!--   <img src="<?php echo RECURSOS;?>img<?php echo DS; ?>heppi_vital.jpg" alt="Cinelli">
+          <img src="<?php echo RECURSOS;?>img<?php echo DS; ?>heppi_natural.jpg"   alt="Surly">
+          <img src="<?php echo RECURSOS;?>img<?php echo DS; ?>heppi_persistente.jpg" alt="Cinelli"> -->
+          <!-- <img src="<?php echo RECURSOS;?>img<?php echo DS; ?>affinity.jpeg" width="1024" height="685" alt="Affinity"> -->
+          <?php $this->_objMain->cargarSlider(); ?>
+        </div>
+        <nav class="slides-navigation">
+          <a href="#" class="next"></a>
+          <a href="#" class="prev"></a>
+        </nav>
+    </div>
+    <script type="text/javascript" src="<?php echo RECURSOS;?>js<?php echo DS; ?>jquery-1.11.0.min.js"></script>
+    <script src="<?php echo RECURSOS;?>js<?php echo DS; ?>jquery.easing.1.3.js"></script>
+      <script src="<?php echo RECURSOS;?>js<?php echo DS; ?>jquery.animate-enhanced.min.js"></script>
+    <script src="<?php echo RECURSOS;?>js<?php echo DS; ?>jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function() {
+          $('#slides').superslides({
+            hashchange: false,
+            play: 3000,
+            animation:'fade'
+          });
+
+          $('#slides').on('mouseleave', function() {
+            $(this).superslides('start');
+          });
+        });
+    </script>
+
+    <section id ="bienvenido-Heppi">
+        <?php require_once(VISTAS."heppi.phtml"); ?>
+    </section>
+    <section id ="comofunciona-Heppi" class ="seccion-center">
+       <ul id ="comofunciona">
+            <li>
+                <img class= "img-pasos" src="<?php echo RECURSOS;?>img<?php echo DS; ?>paso-uno.png">
+                <div class ="texto-paso">
+                    <p>Navega en nuestra tienda y selecciona los productos que quieres comprar.</p>
+                </div>
+                <img class= "img-pasos nro" src="<?php echo RECURSOS;?>img<?php echo DS; ?>nrouno.png">
+            </li>
+             <li>
+                <img class= "img-pasos" src="<?php echo RECURSOS;?>img<?php echo DS; ?>pasodos.png">
+                <div class ="texto-paso">
+                    <p>Ingresa tus datos y selecciona los modos de pago.</p>
+                </div>
+                <img class= "img-pasos nro" src="<?php echo RECURSOS;?>img<?php echo DS; ?>nrodos.png">
+            </li>
+             <li>
+                <img class= "img-pasos " src="<?php echo RECURSOS;?>img<?php echo DS; ?>pasotres.png">
+                <div class ="texto-paso">
+                    <p>Heppi pronto llegará donde lo desees.</p>
+                </div>
+                <img class= "img-pasos nro" src="<?php echo RECURSOS;?>img<?php echo DS; ?>nrotres.png">
+            </li>
+       </ul>
+    </section>
+    <section id ="productos-Heppi" class ="seccion-center">
+        <div class="triangulo_sup"></div>
+        <span class ="titulo-heppi-uno"><h5 class ="inline-title pequeno" >Nuestros</h5><h4 class ="inline-title grande">PRODUCTOS</h4></span><br />
+        <div class ="inline productos"><img src="<?php echo RECURSOS;?>img<?php echo DS; ?>produtos-heppi.png"></div>
+        <article class ="inline productos">
+            <div class ="informacion-producto">
+                <h3 class ="titulos-medianos">Snacks</h3><br />
+                <p>
+                    Nuestros snacks han sido cuidadosamente seleccionados para entregarte la mejor y más saludable variedad de 
+                    productos para tus entre comidas, eventos o simplemente como una saludable opción que te dará energía para ir a 
+                    entrenar.  Podrás encontrar también en esta sección  
+                    productos libres de azúcar y colesterol.
+                </p>
+                <br />
+            </div>
+        </article>
+        <br />
+        <br />
+    </section>
+    <section  class ="seccion-center" id ="semillas">
+        <div class="triangulo_sup" ></div>
+        <div class ="info-producto-larga">
+            <h3 class ="titulos-medianos color-verde">Semillas y cereales</h3><br />
+            <p>Tanto los cereales integrales como las nueces y semillas que encuentras en esta sección son alimentos extraordinarios, ricos en proteínas, minerales, vitaminas antioxidantes y acidos grasos esenciales omega 3 y omega 6.  Son productos muy versatiles para usar dentro de tus preparaciones o como snacks.  Al ser alimentos altos en fibra, vitaminas, minerales y acidos grasos esenciales te ayudarán a mantener una optima salud del sistema cardiovascular y digestivo.</p>
+        </div>
+        <div style ="text-align: right;"><img id= 'img-semillas' src="<?php echo RECURSOS;?>img<?php echo DS; ?>semillas-heppi.png"></div>
+    </section>
+    <section  class ="seccion-center" id ="refrigerado">
+        <div class="triangulo_sup" ></div>
+        <div class ="info-producto-larga">
+            <h3 class ="titulos-medianos color-azul">Refrigerados</h3><br />
+            <p>Deleitate con una gran variedad de productos saludables. Aquí encuentras bebidas de almendras y yogures caracterizados por su alto aporte proteíco, vitaminico y por ser bajos en grasa y sin colesterol. También podrás encontrar  los alimentos esenciales para disfrutar de un delicioso y balanceado desayuno: arepas integrales y waffles de avena.</p>
+        </div>
+        <div style ="text-align: left;max-height: 510px;"><img  style = "width: 63%;" src="<?php echo RECURSOS;?>img<?php echo DS; ?>foto-refrigerado.png"></div>
+        <br />
+        <br />
+    </section>
+    <section  class ="seccion-center" id ="alcena">
+        <div class="triangulo_sup" ></div>
+        <div class ="info-producto-larga">
+            <h3 class ="titulos-medianos">Alacena</h3><br />
+
+            <p>Una gran variedad de productos saludables que no pueden faltar en tu alacena.  Alimentos elaborados con la más alta calidad y con los mejores ingredientes naturales e integrales que le aportarán a tu organismo los nutrientes vitales 
+                y necesarios para mantener y mejorar tu salud.</p>
+        </div>
+        <div style ="text-align: left;"><img style="width: 100%;" src="<?php echo RECURSOS;?>img<?php echo DS; ?>alacena.png"></div>
+  <!--      </section>
+        <section id ="recetas-Heppi" class ="seccion-center">
+       <h3>Recetas</h3>
+    </section> -->
+    </section>
+    <section id ="content-margen-producto">
+        <div id ="tienda-ancla"></div><div id ="tienda-ancla-canasta"></div>
+ <h5 class="inline-title pequeno">Nuestra</h5><h4 class="inline-title grande">Tienda</h4>
+        <br />
+        <br />
+        <?php
+        if(isset($_GET['categoria'])){
+            $vector['categoria'] =  $_GET['categoria'];
+        }else{
+           $vector['categoria'] = 0;
+        }
+     
+           //  $vector['categoria'] =  ? $_GET['categoria'] : 0; 
+           // echo $vector;
+            
+            $obj_pro = ControllerMain::makeObjects("Productos",1);
+            $obj_pro ->selectCategorias();
+            echo "<div id ='contenedor-productos'>";
+            $obj_pro->selectProducto($vector); 
+            echo "</div>";
+        ?>
+    </section>
+    <section>
+        <section  id ="tienda-contacto" class ="seccion-center">
+        <h3 class ="titulos-medianos" id ="orientacion">Contáctenos</h3><br /><br />
+        <div id ="contenedor-contacto">
+            <div class="columnas inline" id="left">
+                <div class="filas">
+                    <div class ="objetos">
+                        <input type ="text" name  ="nombre" id ="nombre" placeholder="Ingresa tu nombre"/>
+                    </div>
+                </div>
+                <div class="filas">
+                    <div class ="objetos">
+                        <input type ="text" name  ="telefono" id ="telefono" placeholder="Ingresa tu teléfono"/>
+                    </div>
+                </div>
+                
+                <div class="filas">
+                    <div class ="objetos">
+                        <input type ="mail" name  ="correo" id ="correo" placeholder="Ingresa tu correo"/>
+                    </div>
+                </div>
+            </div>
+            <div class="columnas inline" id ="rigth">
+                <div class="filas">
+                    <div class ="objetos">
+                        <textarea name ="mensaje" id = "mensaje" placeholder="Ingresa tu mensaje"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="filas">
+                <div class ="objetos">
+                    <input class ="botones" type ="button" id ="btn-enviar" value ="enviar"/>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

@@ -1,0 +1,38 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	text-decoration:none;
+	
+}
+a:visited{
+	text-decoration:none;
+}
+
+body, html{
+	height: 100%;
+}
+body{
+	background-image: url(../img/fondo.jpg);
+	background-size: cover;
+	background-position: 0px  80%;
+}
+#informacion-landing img{
+	  width: 100%;
+	  position: absolute;
+	  left: 2%;
+	  top: 1%;
+	  max-width: 390px;
+}
+#redes-sociales{
+	position: absolute;
+	bottom: -24px;
+	width: 100%;
+	text-align: center;
+}
+#redes-sociales img{
+	width: 100%;
+	min-width: 900px;
+	max-width: 900px;
+}

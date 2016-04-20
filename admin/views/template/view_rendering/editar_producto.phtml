@@ -1,0 +1,95 @@
+ <div class="row">
+            <div class="box col-md-12">
+                <div class="box-inner">
+                    <div class="box-header well" data-original-title="">
+                        <h2><i class="glyphicon glyphicon-edit"></i> Editar productos</h2>
+
+                        <div class="box-icon">
+                            <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                    class="glyphicon glyphicon-cog"></i></a>
+                            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                    class="glyphicon glyphicon-chevron-up"></i></a>
+                            <a href="#" class="btn btn-close btn-round btn-default"><i
+                                    class="glyphicon glyphicon-remove"></i></a>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <?php
+                         require_once (VISTAS.'galeria_productos.phtml');   
+                        $obje = ControllerMain::makeObjects("Productos", 1);
+                        $data =  $obje->selecccionarProducto(array('idProducto'=>$_GET['idProducto']));
+
+                        ?> 
+                        <?php if($data):?>
+                        <form  role="form" id ="form-editar-productos">
+                            <div class="form-group">
+                                <label for="txtnombre">Nombre producto</label>
+                                <input type="text" class="form-control" id="txtnombre" name ="txtnombre"   value ="<?php echo $data['nombre'] ?>">
+                                <input type ="hidden" name ="idproducto" value ="<?php echo$_GET['idProducto']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="imagen">Imagen </label>
+                                <input type="text" class="form-control" id="imagen" name ="txtimagenuno"    value ="<?php echo $data['img'] ?>">
+                            </div>
+                          
+                            <div class="form-group">
+                                <label for="txtcosto">Costo producto</label>
+                                <input type="number" class="form-control" id="txtcosto" name ="txtcosto"  value ="<?php echo $data['costo']?>">
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="txtseo">Características de busqueda(SEO)</label>
+                                <input type="text" class="form-control" id="txtseo" name ="txtseo"  value ="<?php echo $data['seo']?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtorden">Orden</label>
+                                <input type="text" class="form-control" id="txtorden" name ="txtorden"  value ="<?php echo $data['orden']?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="txcantidad">Cantidad</label>
+                                <input type="text" class="form-control" id="txcantidad"  name ="txcantidad" value ="<?php echo $data['cantidad']?>"></div>
+                             <div class="form-group">
+                                <label for="txt-cantidad">Estado</label>
+                                <select  name ="estado"  id ="estado">
+                                    <option value ="1">Activo</option>
+                                    <option value ="0">Desactivado</option>
+                                </select>
+                            </div>
+                             <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                              <textarea class="form-control" rows="3" name ="descripcion"><?php echo $data['descripcion']?></textarea>
+                         </div>
+                           
+                                
+                        
+                           
+                            <div class="control-group">
+                                <label class="control-label" for="categorias">Categorias producto</label>
+                                <div class="controls">
+                                    <select  id ="categorias" name ="categorias">
+                                    <?php echo $obje->seletCategorias(); ?>
+                                    </select>
+                                </div>
+                            </div><br />
+                            <div class="control-group">
+                                <input id ="btn-gurdarcambios-producto" type="button"value ="Guardar Producto"><button type="button" class="btn btn-default" onClick="javascript:history.back(1)">Volver</button>
+                            </div>
+                            
+                        </form>
+                    <?php else:?>
+                    No existe este producto
+                <?php endif;?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+             marcarSelect("categorias",<?php echo $data['categoria'];?>);
+               
+        </script>
+           <script type="text/javascript">
+           
+             marcarSelect("estado",<?php echo $data['estado'];?>);
+               
+        </script>

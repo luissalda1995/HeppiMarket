@@ -1,0 +1,21 @@
+<?php if(isset($_SESSION['id_pago_echo_10260']) && !empty($_SESSION['id_pago_echo_10260']) && $_SESSION['id_pago_echo_10260'] !="**"): ?>
+
+<section class ="center-body">
+    <article>
+        <h2 class ="titulos-rigo">Rigo<span class="color-rosa"><!--<?php // echo $this->translate("Tienda",$lang);?>-->Envio</span></h2>
+        <?php 
+         $_pasarella =  ControllerMain::makeObjects("pasarella", 1);
+         echo  $_pasarella->consultarEstadopago($_SESSION['id_pago_echo_10260']);
+        ?>   
+        <script>
+           $("#cantidad-cart").text("");
+        </script>
+    </article>
+</section>
+<?php else: ?>
+<section class ="center-body">
+    <article>
+        <h3>No hay suficiente información para estar en esta seccion </h3>
+    </article>
+</section>
+<?php endif; ?>

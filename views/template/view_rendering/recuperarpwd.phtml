@@ -1,0 +1,42 @@
+<style type="text/css">
+    #main-emboltura {
+        position: relative;
+        top: 139px;
+    }
+    .columna,.content-button {
+      width: 100%;
+      min-width: 320px;
+      margin: 0 auto;
+      text-align: center;
+    }
+</style>
+<script src="<?php echo RECURSOS;?>js<?php echo DS; ?>jquery.validar.js" type="text/javascript"></script>
+<section id="main-emboltura">
+<section class ="center-body">
+    <article id ="idproducto" lan ="<?php echo $lang;?>">
+        <h2 class ="titulos-heppi">MI CUENTA HEPPI</h2> <br />
+    </article>
+    <article>
+         <form id ="form-registro" class="forms">
+             <p style="text-align:center">La información ingresada en este formulario es de vital importacia, es nuestra fuente para ofrecerte un excelente servicio</p><br />
+            <div class ="columna inline">
+            	 <div class ="rows">
+                    <span class ="label-form"><label>Correo <span class ="required">*</span></label><input placeholder="Correo" class ="validar" type ="email" name ="txtcorreo" id ="txtcorreo"/></span>
+                </div>
+                <div class ="rows">
+                   <span class ="label-form"><label>Tipo de documento <span class ="required">*</span></label>
+                       <select style ="    max-width: 492px;"  class ="validar" name ="slttipodocumento" id ="slttipodocumento">
+                           <?php echo $this->_objMain->cargarTipodedocumento($lang); ?>
+                       </select>
+                   </span>
+                </div>
+                <div class ="rows">
+                    <span class ="label-form"><label>Nro documento <span class ="required">*</span></label><input placeholder="Nro de documento" validacion="id"  class ="validar" type ="text" name ="txtndocumento" id ="txtndocumento"/></span>
+                </div>
+            </div>
+             <div class ="content-button">
+              <br />
+              <input   id ="btn-recuperar-password" type="button" class="botones-carro" value ="Recuperar contraseña"/></div>
+        </form>
+    </article>
+</section>

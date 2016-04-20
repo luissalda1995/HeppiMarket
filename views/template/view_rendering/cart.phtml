@@ -1,0 +1,44 @@
+<style type="text/css">
+    #main-emboltura {
+        position: relative;
+        top: 139px;
+    }
+</style>
+
+<section id="main-emboltura">
+
+<?php 
+    $_carrito = ControllerMain::makeObjects("Carrito",1);
+
+?>
+<section class ="center-body">
+    <article id="info-web" lan ="<?php echo $lang;?>">
+        <br /><br />
+        La información ingresada en este formulario es de vital importacia, es nuestra fuente para ofrecerte un excelente servicio, el envio de tu productos fuera de la ciudad de Medellín corren por cuenta de quien realiza el pedido(Cliente Heppi).<br /><br />
+        <h2 class ="titulos-heppi">TU PEDIDO</span></h2>
+            <?php
+               $_SESSION['contador'] = (isset($_SESSION['contador']))?$_SESSION['contador']:0;
+                if($_SESSION['contador']>0){
+                    echo "<div id =\"content-cong-cart\">
+                            <a id =\"btn-vaciar\" class =\"botones-carro\" href=\"#\">Vaciar carrito</a>
+                            <div style =\"clear: both;\"></div>
+                        </div>";
+                    $obje = ControllerMain::makeObjects("Carrito",1);
+                    echo "<div id ='centro-carrito'>";
+                    $obje->mostrarCarrito($lang);
+                     echo "</div>";
+                    echo "<div class ='sengle-title-cart'>
+                            <br />
+                            <p id ='total-pago' style='text-align:rigth'>Total a pagar <br />
+                                Valor domicilio $ ".number_format(5000)."<br />
+                               Total: $".$_carrito->totalCartShop(1)." COP".
+                            "</p>
+                         </div>";
+                    
+                    echo "<div class ='sengle-title-cart' id='contenedor-boton-pagar'><a id =\"btn-pagar\" class =\"botones-carro\" href=\"#\">Efectuar compra</a></div>";
+                }else{
+                    echo "<span class ='class vacio'>".$this->translate("Actualmente no hay productos en tu carrito",$lang)."</span>";
+                }
+            ?>
+    </article>
+</section>

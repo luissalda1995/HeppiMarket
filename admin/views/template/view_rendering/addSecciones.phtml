@@ -1,0 +1,43 @@
+<?php $parte = $_GET['nobrese'];
+ $objeContacto = ControllerMain::makeObjects("Secciones",1);
+    $respuesta =  $objeContacto->selectdetallesXSecciones($_GET['seccion']);
+     
+
+?>
+    <script>
+       CKEDITOR.replace('editor1',{customConfig : 'config_basic.js'});
+        CKEDITOR.replace('editor2',{customConfig : 'config_basic.js'});
+        CKEDITOR.replace('editor3',{customConfig : 'config_basic.js'});
+        CKEDITOR.replace('editor4',{customConfig : 'config_basic.js'});
+        CKEDITOR.replace('editor5',{customConfig : 'config_basic.js'});
+        CKEDITOR.replace('editor6',{customConfig : 'config_basic.js'});
+    </script>
+<form role="form" id ="formulario-seccion">
+    <?php $n=1;$ieditor=1 ?> 
+    <?php    foreach ($respuesta as $value): ?>
+        <h2 style ="text-align: center;"><?php echo $parte." ".$value['nidioma'] ?></h2>
+        <div class="form-group">
+            <label for="titulouno">Título uno</label>
+            <input type="text" class="form-control" id="titulo<?php echo $n.$value['nidioma'];?>" name ="titulo<?php echo $n.$value['nidioma'];?>" value="<?php echo $value['titulouno'];?>">
+            <input type="hidden" class="form-control"  name ="idregistro" value="<?php echo $value['idseccion'];?>">
+        </div>
+        <div class="form-group">
+        <label for="sel1">Conenido uno</label>
+         <textarea class='editor' name="editor<?php echo $ieditor;?>" id="editor<?php echo $n.$value['nidioma'];?>" name ="editor<?php echo $n.$value['nidioma'];?>" rows="10" cols="80"><?php echo $value['contenidouno'];?></textarea>
+        </div>
+          <div class="form-group">
+            <label for="titulouno">Título dos</label>
+            <input type="text" class="form-control" id="titulo<?php echo $n+1 .$value['nidioma'];?>" name ="titulo<?php echo $n+1 .$value['nidioma'];?>" value="<?php echo $value['titulodos'];?>">
+        </div>
+        <div class="form-group">
+        <label for="sel1">Conenido dos</label>
+         <textarea class='editor' name="editor<?php echo $ieditor+1;?>"  rows="10" cols="80"><?php echo $value['contenidodos'];?></textarea>
+        </div>
+         <div class="form-group">
+            <label for="img<?php echo $value['nidioma'];?>">Imágenes <?php echo $value['nidioma'];?></label>
+            <input type="text" class="form-control" id="img<?php echo $value['nidioma'];?>" name ="img<?php echo $value['nidioma'];?>"    value="<?php echo $value['img'];?>">
+        </div>
+       <?php  $ieditor = $ieditor +2?>
+    <?php endforeach; ?>
+    <button type="submit" class="btn btn-default" id ="btn-guardarSeccion">Enviar</button>
+</form>

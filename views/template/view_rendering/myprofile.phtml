@@ -1,0 +1,99 @@
+<?php if(isset($_SESSION['usuario']) && !empty($_SESSION['usuario'][0])): ?>
+<script src="<?php echo RECURSOS;?>js<?php echo DS; ?>jquery.validar.js" type="text/javascript"></script>
+<?php 
+    $_oUsuario = ControllerMain::makeObjects("Usuarios",2); 
+    $vectorInfo = array("cedula"=>$_SESSION['usuario'][0]['cedula']);
+    $data = $_oUsuario->traerUsario($vectorInfo,1);
+    $obje = ControllerMain::makeObjects("Carrito",1);
+?>
+<style type="text/css">
+    #main-emboltura {
+        position: relative;
+        top: 139px;
+    }
+</style>
+<section id="main-emboltura">
+
+<section class ="center-body">
+    <article id ="idproducto" lan ="<?php echo $lang;?>">
+        <h2 class ="titulos-heppi">HEPPI PERFIL</h2><br />
+    </article>
+    <article>
+         <form id ="form-guardar-perfil" class ="tramitar_pedido">
+             <p>La información ingresada en este formulario es de vital importacia, es nuestra fuente para ofrecerte un excelente servicio, el envio de tu productos fuera de la ciudad de Medellín corren por cuenta de quien realiza el pedido(Cliente Heppi)</p><br />
+            <div class ="columna inline">
+               <div class ="rows">
+                   <span class ="label-form"><label>Nombre <span class ="required">*</span></label><input class ="validar" type ="text" name ="txtnombre" id ="txtnombre" value ="<?php echo $data['nombrecliente']; ?>"/>
+                       <input class ="validar" 
+                       type ="hidden" name ="idperfil" id ="idperfil" value ="<?php echo $data['idclientescompra']; ?>"/>
+                   </span>
+               </div>
+               <div class ="rows">
+                   <span class ="label-form"><label>Apellidos <span class ="required">*</span></label><input  class ="validar" type ="text" name ="txtapellidos" id ="txtapellidos" value ="<?php echo $data['apellidocliente']; ?>"/></span>
+               </div>
+               <div class ="rows">
+                   <span class ="label-form"><label>Usuario <span class ="required">*</span></label><input placeholder="Usuario"  class ="validar" type ="text" name ="txtusuario" id ="txtusuario" readonly="readonly" value ="<?php echo $data['usuarologuin']; ?>"/></span>
+               </div>
+               <div class ="rows">
+                   <span class ="label-form"><label>Constraseña <span class ="required">*</span></label><input placeholder="Contraseña"  class ="validar" type ="password" name ="txtconstra" id ="txtconstra" /></span>
+               </div>
+               
+                <div class ="rows">
+                    <span class ="label-form"><label>Correo <span class ="required">*</span></label><input  class ="validar" type ="email" name ="txtcorreo" id ="txtcorreo" value ="<?php echo $data['mailcliente']; ?>"/></span>
+                </div>
+                  <div class ="rows">
+                    <span class ="label-form"><label>Teléfono <span class ="required">*</span></label><input   class ="validar"type ="text" name ="txttelefono" id ="txttelefono" value ="<?php echo $data['telefonocliente']; ?>"/></span>
+                </div>
+            </div>
+            <div class ="columna inline">
+            	<div class ="rows">
+                   <span class ="label-form"><label>Tipo de documento <span class ="required">*</span></label>
+                       <select  class ="validar" name ="slttipodocumento" id ="slttipodocumento">
+                           <?php echo $this->_objMain->cargarTipodedocumento($lang); ?>
+                       </select>
+                   </span>
+                </div>
+                <div class ="rows">
+                    <span class ="label-form"><label>Nro documento <span class ="required">*</span></label><input  class ="validar" type ="text" name ="txtndocumento" id ="txtndocumento" value ="<?php echo $data['cedulacliente']; ?>"/></span>
+                </div>
+              
+            
+                <div class ="rows">
+                    <span class ="label-form"><label>Pais <span class ="required">*</span></label><input  class ="validar" type ="text" name ="txtpais" id ="txtpais" value="<?php echo $data['pais']; ?>"/></span>
+                </div>
+                <div class ="rows">
+                    <span class ="label-form"><label>Departamento <span class ="required">*</span></label><input  class ="validar" type ="text" name ="txtdepartemento" id ="txtdepartemento"  value="<?php echo $data['departamento']; ?>"/></span>
+                </div>
+                <div class ="rows">
+                    <span class ="label-form"><label>Ciudad <span class ="required">*</span></label><input  class ="validar" type ="text" name ="txtciudad" id ="txtciudad" value="<?php echo $data['ciudad']; ?>" /></span>
+                </div>
+                <div class ="rows">
+                    <span class ="label-form"><label>Dirección residencia <span class ="required">*</span></label><input  class ="validar" type ="text" name ="txtdireccion" id ="txtdireccion" value="<?php echo $data['direccionentrega']; ?>"/></span>
+                </div>
+            </div>
+             <div class ="content-button">
+              <br /><br />
+              <input  class ="validar botones-carro" id ="btn-guardar-perfil" type="button"  value ="Guardar cambios"/></div>
+        </form>
+    </article>
+</section>
+<script>
+    marcarSelect("slttipodocumento",<?php echo $data['tipodocumento']; ?>);
+</script>
+<?php else: ?>
+
+<section class ="center-body">
+    <article id ="idproducto" lan ="<?php echo $lang;?>">
+        <h2 class ="titulos-rigo">Rigo<span class="color-rosa"><?php echo $this->translate("Pago",$lang);?></span></h2>
+    </article>
+    <article>
+        <p>Lo sentimos para estar esta sección debe ingresar sus datos: Usuario y contraseña si no los tiene lo invitamos a crearlos <a href="<?php echo  $lang; ?>-myaccount">Aquí</a></p>
+    </article>
+</section>                
+                
+ <?php endif; ?>               
+                
+               
+                
+                
+                

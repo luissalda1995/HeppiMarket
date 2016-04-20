@@ -1,0 +1,33 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+	    $pantalla = $(window);
+	    $('.parallax').each(function(){
+	        var $this = $(this);
+	        $pantalla.scroll(function() {
+	            var y = -(200-$pantalla.scrollTop() / $this.data('movimiento')); 
+	            var xy = '50% '+ y + 'px';
+	            $this.css({ backgroundPosition: xy });
+	       });
+	    });
+}	);
+</script>
+
+  
+	<div class="pagina parallax"  id = "dos" data-movimiento="5"></div>
+	 	<div class="pagina parallax" id = "uno" data-movimiento="5">
+
+   	</div>
+	<!-- <div class="pagina parallax" data-movimiento="10"></div> -->
+<style type="text/css">
+	.pagina {
+	width: auto;
+	height: 900px;
+	background-repeat: no-repeat;
+	background-position: 50% 0;
+	background-size: cover;
+	background-attachment: fixed;
+
+	}	
+	#dos { background-image: url(<?php echo RECURSOS;?>img<?php echo DS; ?>h1.jpg); }
+	#uno{ background-image: url(<?php echo RECURSOS;?>img<?php echo DS; ?>h3.png); }
+</style>

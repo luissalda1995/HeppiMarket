@@ -1,0 +1,30 @@
+<?php
+header("Content-type: application/vnd.ms-excel; name='excel'");
+header("Content-Disposition: filename=ficheroExcel.xls");
+header("Pragma: no-cache");
+header("Expires: 0");
+?>
+<table border='1' class="rwd_auto" style='margin-bottom:0px'>
+             <thead>
+                    <tr>
+                        <th >Código pago</th>
+                        <th>Fecha</th>
+                        <th  >Producto</th>
+                        <th>Cantidad</th>
+                        <th >Cliente</th>
+                        <th >Cédula</th>
+                        <th >Valor unitario</th>
+                        <th >Valor total</th>
+                    </tr>
+                   
+                    </thead>
+                    <tbody>
+<?php
+    $data = array('ini' => $_GET['fechaini'],
+        'fin' =>$_GET['fechaend']
+     );
+    $obje = ControllerMain::makeObjects("Pedidos", 1);
+    $data =  $obje->reporteVentas($data);
+    printf($data);?>
+</tbody></table>
+<? exit; ?>

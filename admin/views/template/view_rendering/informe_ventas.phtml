@@ -1,0 +1,81 @@
+
+<div class="ch-container">
+
+    <div class="row">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Ventas Cerradas</h2>
+                    
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                
+                <div class="box-content">
+                           <div class="form-group" style ="width: 100%;max-width: 300px;">
+                                <label for="txt-cantidad">Seleccione rango de fechas</label>
+                                <input type="text" class="form-control"  name ="data" id ="data" class ="data" >
+                                <button id ="cargartodo" type="button" class="btn btn-primary start">
+                                    <i class="glyphicon glyphicon-upload"></i>
+                                    <span>Ventas del día</span>
+                                </button>
+                            </div>
+                    <div id ="informestabla">
+                         <?php
+                         $obje = ControllerMain::makeObjects("Pedidos", 1);
+                         if(isset($_GET['fechaini']) && isset($_GET['fechaend'])){
+                             $vector['fechaini'] = $_GET['fechaini'];
+                             $vector['fechaend'] = $_GET['fechaend'];
+                             $ini = $_GET['fechaini'];
+                             $fin = $_GET['fechaend'];
+                                $obje->selectProducto($vector);
+                         }else{
+                         	$ini = date("Y-m-d");
+                             $fin = date("Y-m-d");
+                              $obje->selectProducto();
+                         }
+                   		echo "<script>
+                             	function generarInforme(){
+                             		location.href = 'index.php?fancy=excel_ventas&fechaini=".$ini ."&fechaend=".$fin."';
+                             	}
+                             </script>";
+                    ?><br />
+                    <button id ="descargareexcel" type="button" class="btn btn-primary start" onClick="javascript:generarInforme();">
+                                    <i class="glyphicon glyphicon-upload"></i>
+                                    <span>Generar excel</span>
+                                </button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+$('#data').daterangepicker({
+
+    "showDropdowns": true,
+    "linkedCalendars": false,
+    "startDate": "08/07/2015",
+    "endDate": "08/13/2015"
+}, function(start, end, label) {
+    
+    location.href="index.php?vista=informe_ventas&fechaini="+start.format('YYYY-MM-DD')+"&fechaend="+end.format('YYYY-MM-DD')+"";
+
+//    mostrardata(start.format('YYYY-MM-DD'),end.format('YYYY-MM-DD'));
+//  console.log(start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+});
+$('#data-todo').daterangepicker({
+
+    "showDropdowns": true,
+    "linkedCalendars": false,
+    "startDate": "08/07/2015",
+    "endDate": "08/13/2015"
+}, function(start, end, label) {
+    
+    location.href="index.php?vista=informe_ventas&fechainitodo="+start.format('YYYY-MM-DD')+"&fechaendtodo="+end.format('YYYY-MM-DD')+"#transaccionestodas";
+//    mostrardata(start.format('YYYY-MM-DD'),end.format('YYYY-MM-DD'));
+//  console.log(start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+});
+</script>

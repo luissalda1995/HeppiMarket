@@ -1,0 +1,47 @@
+.floatnone{
+    float: none !important;
+    padding-left: 0px;
+}
+.contenido-tabla{
+    overflow-y: auto;
+    height: 300px;
+    width: 100%;
+}
+#form-agregar-productos{
+    width: 100%;
+    max-width: 800px;;
+    margin: 0 auto;
+}
+.separadores-formulario{
+    text-align: center;
+    border-bottom: 2px solid activeborder;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+#sltcategorias_chosen{
+    width: 100% !important;
+}
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+    padding: 0px !important;
+}
+.full{
+    background-color: green;
+    padding: 3px 5px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 0.7em;
+}
+.malo{
+    background-color: red;
+    padding: 3px 5px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 0.7em;
+}
+.medium{
+    background-color: #F36C00;
+    padding: 3px 5px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 0.7em;
+}

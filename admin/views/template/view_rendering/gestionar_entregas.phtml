@@ -1,0 +1,132 @@
+
+<div class="ch-container">
+
+    <div class="row">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Gestión pedidos</h2>
+                    
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                
+                <div class="box-content">
+                 <?php
+                        $obje = ControllerMain::makeObjects("Pedidos", 1);
+                       $data =  $obje->detallePagoFactura($_GET['codigopago']);
+                       $datamain = $obje->detallePagoCliente($_GET['codigopago']);
+                       echo "<div id ='factura' class ='imprimir'><div class='inline-factura' style ='width: 49%;
+    		display: inline-block;
+    		vertical-align: top;'>
+                       <strong>Pedido:</strong>  $_GET[codigopago]<br />
+                       <strong>Nombre:</strong> $datamain[nombrecliente] $datamain[apellidocliente]<br />
+                       <strong>Documento: </strong> $datamain[cedulacliente] <br />
+                       <strong>Fecha:</strong> $datamain[fecha] . <br />
+                       <strong>Dirección:</strong> $datamain[ciudad] $datamain[departamento]  $datamain[pais] $datamain[direccionentrega] <br /> <strong>Teléfono:</strong> $datamain[telefonocliente]<br />
+                         <strong>Correo:</strong> $datamain[mailcliente]<br /><br /><br /></div><div id ='logo' class ='inline-factura' style ='width: 49%;
+    		display: inline-block;
+    		vertical-align: top;text-align:right'><img src= '".RECURSOS."img".DS."heppi-market-log.png"."' /></div>";
+
+
+
+                       echo "<table style ='   width: 100%;
+    			border: 1px solid #d1d1d1;' class=\"rwd_auto\" style='margin-bottom:0px'>"
+					            . "  <thead>
+					                    <tr>
+					                        <th style ='border: 1px solid #d1d1d1;' >Productos</th>
+					                        <th style ='border: 1px solid #d1d1d1;'>Cantidad</th>
+					                        <th style ='border: 1px solid #d1d1d1;'  >Val Unit.</th>
+					                        <th style ='border: 1px solid #d1d1d1;'>Valor total</th>
+					                    </tr>
+					                   
+					                    </thead>
+					                    <tbody>";
+					    $suma = 0;
+                       foreach ($data as $key => $value) {
+                       		echo "<tr>
+	                   			<td style ='border: 1px solid #d1d1d1;'>$value[nombre]</td>
+                   				<td style ='border: 1px solid #d1d1d1;'>$value[cantidad]</td>
+               					<td style ='border: 1px solid #d1d1d1;'>$value[total]</td>
+           						<td style ='border: 1px solid #d1d1d1;'>".number_format($value['cantidad']*$value['total'])."</td>
+                       		</tr>";
+                       		$suma = $suma +$value['cantidad']*$value['total'];
+                       }
+                        echo "</tbody></table>";
+
+                        echo "<div id ='total' style ='width: 100%;
+    		max-width: 900px;
+    		margin: 10px auto;
+    		text-align: right;'><stron>Total Pedido:</strong> $".number_format($suma ). " COP</div></div>";
+                        
+
+
+                    ?>
+                 	<div class="form-group">
+                        <button type="button" id="btn-imprimir-pedido"> Imprimir</button>
+                    </div>
+                    <form id ="cambiar_estado_pedido">
+                      <div class="form-group">
+                                <label for="txt-cantidad">Cambiar estado de pedido </label>
+                                <select name ="estado">
+                                	<option value ="1">Solicitado</option>
+                                	<option  value ="2">Entregado</option>
+                                	<option  value ="3">Cancelado</option>
+                                </select>
+                        </div>
+                      <div class="form-group">
+                             
+                                <input type="hidden" class="form-control" id="codigopago" name ="codigopago" value ="<?php echo  $datamain['codigopago']; ?>">
+                            </div>
+
+                        <div class="control-group">
+                                <button type="button" id ="btn-guardar-estado" class="btn btn-default">Guardar Cambio</button> <button type="button" class="btn btn-default" onClick="javascript:history.back(1)">Volver</button>
+                        </div>
+                          
+                     </form>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+    	#logo{
+    		text-align: right;
+    	}
+    	.inline-factura{
+    		width: 49%;
+    		display: inline-block;
+    		vertical-align: top;
+    	}
+    	#factura{
+    		position: relative;
+    		width: 100%;
+    		max-width: 900px;
+    		margin: 0 auto;
+    	}
+    	#total{
+    		width: 100%;
+    		max-width: 900px;
+    		margin: 10px auto;
+    		text-align: right;
+    	}
+    	table{
+    		    width: 100%;
+    			border: 1px solid #d1d1d1;
+    	}
+    	table tr td{
+    		
+		}
+    </style>
+
+ <script type="text/javascript">
+                  $(document).ready(function()
+                  {
+                    $("#btn-imprimir-pedido").bind("click",function()
+                    {
+                      $('.imprimir').printArea();
+                    });
+                  });
+                  </script>
