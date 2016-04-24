@@ -52,8 +52,21 @@ Class ControllerProductos extends ControllerMain {
                                 $ $value[costo] COP</span>
                             <span><a class = 'addcart' valpro= '$value[idproducto]' href =\"#\"><img  src=\"".RECURSOS."img".DS."add-cart.png\" /></a></span>
                         </div>
+                        <button id='myBtn' onclick='mostrarModal($value[idproducto]);'>Detalles</button>
                 </div>
-          
+                <!-- The Modal -->
+                <div id='myModal$value[idproducto]' class='modal'>
+
+                  <!-- Modal content -->
+                  <div class='modal-content'>
+                    <span class='close' onclick='cerrarModal($value[idproducto]);'>×</span>
+                        <span class='zoom' id='ex1'>
+                            <img id='zoom$value[idproducto]' src=\"public/productos/$value[img]\" data-zoom-image=\"public/productos/$value[img]\" />
+                        </span>
+                        <p>$value[descripcion]</p>      
+                  </div>
+
+                </div>
                 ";
             }
         }else{
