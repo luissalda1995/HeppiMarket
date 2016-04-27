@@ -271,16 +271,14 @@ $('a.ancla').click(function(e){
 mostrarModal = function(id) {
     document.getElementById('myModal' + id).style.display = "block";
         $('#zoom' + id).elevateZoom({
-            zoomType: 'inner',
-            cursor: 'crosshair',
-            zoomWindowFadeIn: 500,
-            zoomWindowFadeOut: 750
+            zoomType : 'inner'
         }); 
 };
 
 // When the user clicks on <span> (x), close the modal
 cerrarModal = function(id) {
     document.getElementById('myModal' + id).style.display = "none";
+    $('.zoomContainer').remove();
 }
 
 // When the user clicks anywhere outside of the modal, close it

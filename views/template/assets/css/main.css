@@ -547,17 +547,22 @@ footer{
 
 /* Modal Content */
 .modal-content {
+	display: table;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+	-moz-border-radius: 15px 15px 15px 15px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 15px 15px 15px 15px;
+	/* para Opera */
+	border-radius: 15px 15px 15px 15px;
 }
 
 .zoomContainer{
 	z-index: 2; /* Sit on top */
 }
-
 
 /* The Close Button */
 .close {
@@ -565,6 +570,7 @@ footer{
     float: right;
     font-size: 28px;
     font-weight: bold;
+    color: #B0BB2A
 }
 
 .close:hover,

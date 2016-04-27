@@ -316,7 +316,9 @@ Class ControllerProductos extends ControllerMain {
         cantidad = $informacio[txcantidad],
         estado = $informacio[estado],
         seo = '$informacio[txtseo]',
-        categoria = $informacio[categorias]
+        categoria = $informacio[categorias],
+        imgnutricional = '$informacio[imagenNutricional]',
+        descripcionnutricional = '$informacio[descripcionNutricional]'
         ";
         $where ="idproducto = $informacio[idproducto]";
         try {
@@ -340,6 +342,9 @@ Class ControllerProductos extends ControllerMain {
         $valores[] = 1;
         $valores[] =  "'".$vector['txtseo']."'";
         $valores[] = "".$vector['categorias']."";
+        $valores[] = "'".$vector['imagenNutricional']."'";
+        $valores[] = "'".$vector['imagenNutricional']."'";
+        $valores[] = "'".$vector['descripcionNutricional']."'";
         try {
             $respuesta = $this->_modelo->insertStand($fiels, $valores, 'productos');
             echo "El producto se ha insertado correctamente";

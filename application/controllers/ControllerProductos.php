@@ -60,10 +60,10 @@ Class ControllerProductos extends ControllerMain {
                   <!-- Modal content -->
                   <div class='modal-content'>
                     <span class='close' onclick='cerrarModal($value[idproducto]);'>×</span>
-                        <span class='zoom' id='ex1'>
-                            <img id='zoom$value[idproducto]' src=\"public/productos/$value[img]\" data-zoom-image=\"public/productos/$value[img]\" />
-                        </span>
-                        <p>$value[descripcion]</p>      
+                        <div id='ex1' style='float:left'>
+                            <img height='400' width='400' id='zoom$value[idproducto]' src=\"public/productos/$value[imgnutricional]\" data-zoom-image=\"public/productos/$value[imgnutricional]\" />
+                        </div style='float:left'>
+                        <div>$value[descripcionnutricional]</div>      
                   </div>
 
                 </div>
