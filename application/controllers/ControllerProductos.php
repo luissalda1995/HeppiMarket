@@ -45,14 +45,11 @@ Class ControllerProductos extends ControllerMain {
             foreach ($productos as $value) {
             echo "<div class=\"content-producto\">
                         <img width='250' class='imagenes' src=\"public/productos/$value[img]\" /><br />
-                        <h3 class =\"titulo-producto\">$value[nombre]</h3><br />
+                        <h3 class =\"titulo-producto\">$value[nombre]</h3>
+                        <h1 class =\"costo-producto\">$ $value[costo] COP</h1><br />
                         <p class =\"desp-producto\">$value[descripcion]</p>
-                        <div class=\"delay-informacion\">
-                            <span>Valor <br />
-                                $ $value[costo] COP</span>
-                            <span><a class = 'addcart' valpro= '$value[idproducto]' href =\"#\"><img  src=\"".RECURSOS."img".DS."add-cart.png\" /></a></span>
-                        </div>
-                        <button id='myBtn' onclick='mostrarModal($value[idproducto]);'>Detalles</button>
+                        <input type='image' src='public/utils/Boton-ver-detalles.png' id='myBtn' onclick='mostrarModal($value[idproducto]);'>
+                        <input type='image' class='addcart' src='public/utils/boton-anadir.png'>
                 </div>
                 <!-- The Modal -->
                 <div id='myModal$value[idproducto]' class='modal'>
@@ -63,7 +60,7 @@ Class ControllerProductos extends ControllerMain {
                         <div id='ex1' style='float:left'>
                             <img height='400' width='400' id='zoom$value[idproducto]' src=\"public/productos/$value[imgnutricional]\" data-zoom-image=\"public/productos/$value[imgnutricional]\" />
                         </div style='float:left'>
-                        <div>$value[descripcionnutricional]</div>      
+                        <div class='descripcionnutricional'>$value[descripcionnutricional]</div>      
                   </div>
 
                 </div>

@@ -38,6 +38,7 @@ $(document).ready(function(){
             //alert("Por aca");
             var cantidad = prompt("Cantidad del producto");
             var producto = $(this).attr("valpro");
+            console.log(producto);
             if(cantidad > 0){
                 agregarCarrito(cantidad,producto);
             }

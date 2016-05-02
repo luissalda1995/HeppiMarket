@@ -507,12 +507,10 @@ footer{
     margin: 3px 5px;
     position: relative;
 }
-.content-producto:hover .delay-informacion{
-     width: 100%;
-    display: block;
-    
 
-    }
+.content-producto:hover{
+    background-color: #B3B1B1
+}
 
 .delay-informacion span{
       display: inline-block;
@@ -522,13 +520,20 @@ footer{
       vertical-align: middle;
       color: #A4BC39;
 }
+
 .titulo-producto{
      color: #A4BC39;
      font-size: 0.9em;
 }
+
+.costo-producto{
+	color: #A4BC39;
+    font-size: 1.5em;
+}
 .desp-producto{
     color: #231F20;
-     font-size: 0.8em;
+    font-size: 0.8em;
+    height: 100px
 }
 
 .modal {
@@ -550,7 +555,7 @@ footer{
 	display: table;
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    padding: 50px;
     border: 1px solid #888;
     width: 80%;
 	-moz-border-radius: 15px 15px 15px 15px;
@@ -558,6 +563,10 @@ footer{
 	-webkit-border-radius: 15px 15px 15px 15px;
 	/* para Opera */
 	border-radius: 15px 15px 15px 15px;
+}
+
+.descripcionnutricional{
+	padding: 20px
 }
 
 .zoomContainer{
