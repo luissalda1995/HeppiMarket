@@ -49,7 +49,7 @@ Class ControllerProductos extends ControllerMain {
                         <h1 class =\"costo-producto\">$ $value[costo] COP</h1><br />
                         <p class =\"desp-producto\">$value[descripcion]</p>
                         <input type='image' src='public/utils/Boton-ver-detalles.png' id='myBtn' onclick='mostrarModal($value[idproducto]);'>
-                        <input type='image' class='addcart' src='public/utils/boton-anadir.png'>
+                        <input type='image' class='addcart' valpro='$value[idproducto]' src='public/utils/boton-anadir.png'>
                 </div>
                 <!-- The Modal -->
                 <div id='myModal$value[idproducto]' class='modal'>
