@@ -48,21 +48,23 @@ Class ControllerProductos extends ControllerMain {
                         <h3 class =\"titulo-producto\">$value[nombre]</h3>
                         <h1 class =\"costo-producto\">$ $value[costo] COP</h1><br />
                         <p class =\"desp-producto\">$value[descripcion]</p>
-                        <input type='image' src='public/utils/Boton-ver-detalles.png' id='myBtn' onclick='mostrarModal($value[idproducto]);'>
+                        <input type='image' src='public/utils/Boton-ver-detalles.png' id='myBtn' data-toggle='modal' data-target='#myModal$value[idproducto]' onclick='mostrarModal($value[idproducto]);'>
                         <input type='image' class='addcart' valpro='$value[idproducto]' src='public/utils/boton-anadir.png'>
                 </div>
+                <div class='modal fade' data-backdrop='static' id='myModal$value[idproducto]' role='dialog'>
+                <div class='modal-dialog'>
                 <!-- The Modal -->
-                <div id='myModal$value[idproducto]' class='modal'>
-
                   <!-- Modal content -->
                   <div class='modal-content'>
-                    <span class='close' onclick='cerrarModal($value[idproducto]);'>×</span>
-                        <div id='ex1' style='float:left'>
-                            <img height='400' width='400' id='zoom$value[idproducto]' src=\"public/productos/$value[imgnutricional]\" data-zoom-image=\"public/productos/$value[imgnutricional]\" />
-                        </div style='float:left'>
-                        <div class='descripcionnutricional'>$value[descripcionnutricional]</div>      
+                    <div class='modal-body'>
+                            <img class='img-nutricional' id='zoom$value[idproducto]' src=\"public/productos/$value[imgnutricional]\" data-zoom-image=\"public/productos/$value[imgnutricional]\" />
+                        <div class='descripcionnutricional'>$value[descripcionnutricional]</div> 
+                    </div>     
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-default' data-dismiss='modal' onclick='cerrarModal($value[idproducto]);'>Cerrar</button>
+                    </div>
                   </div>
-
+                </div>
                 </div>
                 ";
             }

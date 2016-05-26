@@ -270,15 +270,14 @@ $('a.ancla').click(function(e){
 
 // When the user clicks the button, open the modal 
 mostrarModal = function(id) {
-    document.getElementById('myModal' + id).style.display = "block";
         $('#zoom' + id).elevateZoom({
-            zoomType : 'inner'
+            zoomType : 'inner',
+            constrainType: 'width'
         }); 
 };
 
 // When the user clicks on <span> (x), close the modal
 cerrarModal = function(id) {
-    document.getElementById('myModal' + id).style.display = "none";
     $('.zoomContainer').remove();
 }
 
