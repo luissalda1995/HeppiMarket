@@ -57,7 +57,7 @@ Class ControllerProductos extends ControllerMain {
                   <!-- Modal content -->
                   <div class='modal-content'>
                     <div class='modal-body'>
-                            <img class='img-nutricional' height='250' width='200' id='zoom$value[idproducto]' src=\"public/productos/$value[imgnutricional]\" data-zoom-image=\"public/productos/$value[imgnutricional]\" />
+                            <img class='img-nutricional' width='250' height='250' id='zoom$value[idproducto]' src=\"public/productos/$value[imgnutricional]\" data-zoom-image=\"public/productos/$value[imgnutricional]\" />
                         <div class='descripcionnutricional'>$value[descripcionnutricional]</div> 
                     </div>     
                     <div class='modal-footer'>
