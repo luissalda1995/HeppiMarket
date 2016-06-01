@@ -343,7 +343,6 @@ Class ControllerProductos extends ControllerMain {
         $valores[] =  "'".$vector['txtseo']."'";
         $valores[] = "".$vector['categorias']."";
         $valores[] = "'".$vector['imagenNutricional']."'";
-        $valores[] = "'".$vector['imagenNutricional']."'";
         $valores[] = "'".$vector['descripcionNutricional']."'";
         try {
             $respuesta = $this->_modelo->insertStand($fiels, $valores, 'productos');
