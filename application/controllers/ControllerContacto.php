@@ -7,7 +7,7 @@ Class ControllerContacto extends ControllerMain{
     private $correos;
     private $configurarionphmailer;
     public function __construct(){
-        $this->mail = new phpmailer();
+        $this->mail = new phpmailer(true);
         $this->rutaAbsoluta ="©©";
         $this->maqueta ="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
         <html xmlns=\"http://www.w3.org/1999/xhtml\">
@@ -36,23 +36,21 @@ Class ControllerContacto extends ControllerMain{
         $this->configurarionphmailer = array ("PluginDir"=>LIBRARYS_LOCAL."phpmailer".DS,
         "Helo"=>"www.drink.com.co",
         "Mailer"=>"smtp",
-        "Host"=>"mail.drink.com.co",
+        "Host"=>"smtpout.asia.secureserver.net",
         "SMTPAuth"=>true,
-        "Username"=>"desarrollo@drink.com.co",
-        "Password"=>"23camilo",
-        "From"=>"desarrollo@drink.com.co",
+        "Username"=>"compras@heppimarket.com",
+        "Password"=>"laheppivendedora",
+        "From"=>"compras@heppimarket.com",
         "FromName"=>"Tienda online Heppi mercado saludable",
         "Subject"=>"",
         "Timeout"=>30,
         "IsHTML"=>true,
         "CharSet"=>"utf-8",
-        "Port"=>25);
+        "Port"=>80);
     }
     public function inicializarphpmailer($asunto="NULL"){
-     
-            $this->mail->PluginDir =  trim($this->configurarionphmailer['PluginDir']); 
-            $this->mail->Helo = trim($this->configurarionphmailer['Helo']);
-            $this->mail->Mailer = trim($this->configurarionphmailer['Mailer']);
+            $this->mail->IsSMTP(); 
+            $this->mail->SMTPAuth   = true;
             $this->mail->Host = trim($this->configurarionphmailer['Host']);
             $this->mail->SMTPAuth = trim($this->configurarionphmailer['SMTPAuth']); 
             $this->mail->Username = trim($this->configurarionphmailer['Username']); // Cuenta de e-mail
@@ -165,11 +163,9 @@ Class ControllerContacto extends ControllerMain{
 
         if ($this->mail->Send() == 1) {
             $this->mail->ClearAddresses();
-            echo $this->mail->Send();
            
         } else {
             $this->mail->ClearAddresses();
-            echo $this->mail->Send();
             echo "error";
         }
     }
